@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLUBE DA PIPOCA 🍿</title>
+  <title>BLACK TV</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,14 +13,14 @@
 
     :root {
       --black: #050505;
-      --black-2: #0d0d0d;
-      --gold: #d7a94d;
-      --gold-light: #ffe09a;
+      --black-soft: #0d0d0f;
+      --blue: #19b8ff;
+      --red: #ff255d;
       --green: #25d366;
-      --green-dark: #06190d;
+      --green-light: #74ffae;
       --white: #ffffff;
-      --muted: #cfcfcf;
-      --line: rgba(255, 255, 255, .15);
+      --muted: #cfcfd4;
+      --line: rgba(255, 255, 255, .14);
     }
 
     body {
@@ -41,85 +41,125 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 18px 42px;
+      padding: 28px 18px 46px;
       position: relative;
       overflow: hidden;
       background:
 linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.15)),
 url('banner.jpg');
 
-background-size: cover;
+background-size: 100% auto;
 background-position: center;
+background-repeat: no-repeat;
+background-color: #050505;
     }
 
     .hero-content {
-      width: min(1120px, 100%);
+      width: min(1080px, 100%);
       position: relative;
+      z-index: 2;
       display: grid;
-      gap: 18px;
       justify-items: center;
+      gap: 18px;
       text-align: center;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 16px;
-      border: 1px solid rgba(255, 224, 154, .55);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, .22);
-      color: var(--gold-light);
-      font-size: 14px;
+    .blacktv-logo {
+      width: min(560px, 94vw);
+      height: auto;
+      display: block;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 0 16px rgba(25, 184, 255, .72))
+        drop-shadow(0 0 18px rgba(255, 37, 93, .48))
+        drop-shadow(0 20px 42px rgba(0, 0, 0, .66));
+      animation: logoGlow 3.8s ease-in-out infinite;
+    }
+
+    .brand-kicker {
+      color: rgba(255, 255, 255, .88);
+      font-size: clamp(14px, 2vw, 20px);
       font-weight: 900;
+      line-height: 1;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 12px 34px rgba(0, 0, 0, .18);
+      text-shadow:
+        0 0 12px rgba(25, 184, 255, .34),
+        0 0 12px rgba(255, 37, 93, .24);
+    }
+
+    @keyframes logoGlow {
+      0%,
+      100% {
+        transform: translateY(0);
+        filter:
+          drop-shadow(0 0 14px rgba(25, 184, 255, .65))
+          drop-shadow(0 0 16px rgba(255, 37, 93, .44))
+          drop-shadow(0 18px 38px rgba(0, 0, 0, .64));
+      }
+
+      50% {
+        transform: translateY(-2px);
+        filter:
+          drop-shadow(0 0 24px rgba(25, 184, 255, .94))
+          drop-shadow(0 0 28px rgba(255, 37, 93, .68))
+          drop-shadow(0 22px 48px rgba(0, 0, 0, .72));
+      }
     }
 
     h1 {
-      max-width: 980px;
-      font-size: clamp(34px, 6vw, 68px);
+      max-width: 920px;
+      font-size: clamp(34px, 5.6vw, 64px);
       line-height: 1;
       font-weight: 900;
-      text-shadow: 0 8px 28px rgba(0, 0, 0, .7);
+      background: linear-gradient(90deg, #ffffff 0%, #7bdcff 44%, #ff4f78 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .subtitle {
       max-width: 720px;
-      color: #f3f3f3;
-      font-size: clamp(17px, 2.3vw, 23px);
-      font-weight: 700;
-      text-shadow: 0 5px 24px rgba(0, 0, 0, .82);
+      color: #f5f7fb;
+      font-size: clamp(17px, 2.2vw, 23px);
+      font-weight: 800;
+      text-shadow:
+        0 5px 24px rgba(0, 0, 0, .82),
+        0 0 18px rgba(25, 184, 255, .28),
+        0 0 16px rgba(255, 37, 93, .22);
     }
 
     .promo {
       width: min(820px, 100%);
-      padding: 16px;
-      border: 1px solid rgba(255, 224, 154, .48);
+      padding: 17px;
+      border: 1px solid rgba(123, 220, 255, .34);
       border-radius: 8px;
       background: rgba(0, 0, 0, .28);
       backdrop-filter: blur(10px);
-      box-shadow: 0 20px 58px rgba(0, 0, 0, .32);
+      box-shadow:
+        0 20px 58px rgba(0, 0, 0, .34),
+        inset 0 0 28px rgba(25, 184, 255, .06);
     }
 
     .promo h2 {
-      color: var(--gold-light);
-      font-size: clamp(20px, 3vw, 30px);
+      color: #ffffff;
+      font-size: clamp(21px, 3vw, 31px);
       line-height: 1.1;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
+      text-shadow:
+        0 0 14px rgba(25, 184, 255, .42),
+        0 0 16px rgba(255, 37, 93, .32);
     }
 
     .promo p {
       color: #f7f7f7;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .promo-warning {
       display: block;
       margin-top: 8px;
-      color: #fff2c8;
+      color: #dff5ff;
       font-size: 13px;
       font-weight: 900;
     }
@@ -143,14 +183,14 @@ background-position: center;
 
     .time-box strong {
       color: var(--white);
-      font-size: clamp(26px, 5vw, 38px);
+      font-size: clamp(28px, 5vw, 40px);
       line-height: 1;
     }
 
     .time-box span {
-      color: var(--gold-light);
+      color: #7bdcff;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       text-transform: uppercase;
     }
 
@@ -158,46 +198,100 @@ background-position: center;
       display: none;
       width: min(720px, 100%);
       padding: 18px;
-      border: 1px solid rgba(255, 224, 154, .5);
+      border: 1px solid rgba(123, 220, 255, .46);
       border-radius: 8px;
       background: rgba(0, 0, 0, .34);
-      color: var(--gold-light);
+      color: #7bdcff;
       font-size: clamp(22px, 4vw, 34px);
       font-weight: 900;
     }
 
+    .trial-btn,
     .whatsapp-btn,
     .card-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 0 28px;
-      border: 0;
       border-radius: 999px;
-      background: var(--green);
-      color: var(--green-dark);
+      background:
+        linear-gradient(135deg, rgba(37, 211, 102, .98), rgba(116, 255, 174, .94));
+      color: #031708;
       font-weight: 900;
-      font-size: 16px;
       text-transform: uppercase;
-      box-shadow: 0 15px 36px rgba(37, 211, 102, .34);
-      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow:
+        0 0 22px rgba(37, 211, 102, .44),
+        0 18px 42px rgba(37, 211, 102, .3);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
     }
 
+    .trial-btn {
+      min-height: 60px;
+      padding: 0 36px;
+      border: 1px solid rgba(116, 255, 174, .78);
+      font-size: 18px;
+    }
+
+    .whatsapp-btn {
+      min-height: 56px;
+      padding: 0 34px;
+      border: 1px solid rgba(116, 255, 174, .7);
+      font-size: 17px;
+    }
+
+    .card-btn {
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid rgba(116, 255, 174, .62);
+      font-size: 14px;
+    }
+
+    .trial-btn:hover,
     .whatsapp-btn:hover,
     .card-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 42px rgba(37, 211, 102, .46);
+      transform: translateY(-3px);
+      filter: saturate(1.12);
+      box-shadow:
+        0 0 30px rgba(37, 211, 102, .62),
+        0 24px 52px rgba(37, 211, 102, .38);
     }
 
     .video-area {
-      width: min(790px, 100%);
-      padding: 8px;
-      border: 1px solid rgba(255, 224, 154, .42);
-      border-radius: 16px;
-      background: rgba(0, 0, 0, .24);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, .5);
+      width: min(800px, 100%);
+      position: relative;
+      padding: 10px;
+      border: 1px solid rgba(123, 220, 255, .62);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(25, 184, 255, .24), rgba(255, 37, 93, .18)),
+        rgba(0, 0, 0, .34);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, .58),
+        0 0 34px rgba(25, 184, 255, .34),
+        0 0 42px rgba(255, 37, 93, .22);
       backdrop-filter: blur(6px);
+    }
+
+    .video-area::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      border-radius: 20px;
+      background: linear-gradient(120deg, rgba(25, 184, 255, .72), rgba(255, 37, 93, .62), rgba(37, 211, 102, .42));
+      filter: blur(14px);
+      opacity: .62;
+      animation: videoGlow 3.4s ease-in-out infinite;
+    }
+
+    @keyframes videoGlow {
+      0%,
+      100% {
+        opacity: .46;
+      }
+
+      50% {
+        opacity: .78;
+      }
     }
 
     video {
@@ -211,11 +305,11 @@ background-position: center;
 
     .section {
       padding: 72px 18px;
-      background: linear-gradient(180deg, #050505 0%, #101010 52%, #050505 100%);
+      background: linear-gradient(180deg, #050505 0%, #101012 52%, #050505 100%);
     }
 
     .section.alt {
-      background: #080808;
+      background: #08080a;
     }
 
     .section-inner {
@@ -229,10 +323,13 @@ background-position: center;
     }
 
     .section-title h2 {
-      color: var(--gold-light);
+      color: #ffffff;
       font-size: clamp(28px, 5vw, 46px);
       line-height: 1.1;
       margin-bottom: 8px;
+      text-shadow:
+        0 0 16px rgba(25, 184, 255, .24),
+        0 0 12px rgba(255, 37, 93, .18);
     }
 
     .section-title p {
@@ -272,7 +369,7 @@ background-position: center;
     }
 
     .benefit {
-      color: var(--gold-light);
+      color: #dff5ff;
     }
 
     .plan-grid {
@@ -293,14 +390,14 @@ background-position: center;
     }
 
     .plan-card.featured {
-      border-color: rgba(255, 224, 154, .74);
-      background: linear-gradient(150deg, rgba(215, 169, 77, .18), rgba(255, 255, 255, .04));
-      box-shadow: 0 24px 70px rgba(215, 169, 77, .16);
+      border-color: rgba(123, 220, 255, .7);
+      background: linear-gradient(150deg, rgba(25, 184, 255, .13), rgba(255, 37, 93, .07));
+      box-shadow: 0 24px 70px rgba(25, 184, 255, .12);
     }
 
     .plan-tag {
       min-height: 20px;
-      color: var(--gold-light);
+      color: #7bdcff;
       font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
@@ -309,14 +406,10 @@ background-position: center;
 
     .plan-card h3 {
       color: var(--white);
-      font-size: 21px;
+      font-size: 22px;
       line-height: 1.15;
       text-transform: uppercase;
       margin-bottom: 12px;
-    }
-
-    .no-adults {
-      color: var(--gold-light);
     }
 
     .price {
@@ -334,6 +427,12 @@ background-position: center;
       font-size: 14px;
       margin-bottom: 18px;
       flex: 1;
+    }
+
+    .plans-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
     }
 
     footer {
@@ -355,15 +454,15 @@ background-position: center;
     @media (max-width: 640px) {
       .hero {
         min-height: auto;
-        padding: 24px 14px 36px;
+        padding: 24px 14px 38px;
       }
 
       .hero-content {
         gap: 14px;
       }
 
-      .brand {
-        font-size: 12px;
+      .blacktv-logo {
+        width: min(390px, 94vw);
       }
 
       .promo {
@@ -380,18 +479,25 @@ background-position: center;
         padding: 8px 4px;
       }
 
+      .trial-btn,
+      .whatsapp-btn,
+      .card-btn {
+        width: 100%;
+      }
+
+      .trial-btn {
+        min-height: 56px;
+        padding: 0 18px;
+        font-size: 15px;
+      }
+
       .video-area {
-        padding: 5px;
-        border-radius: 12px;
+        padding: 6px;
+        border-radius: 14px;
       }
 
       video {
         border-radius: 8px;
-      }
-
-      .whatsapp-btn,
-      .card-btn {
-        width: 100%;
       }
 
       .section {
@@ -415,13 +521,14 @@ background-position: center;
   <main>
     <section class="hero">
       <div class="hero-content">
-        <div class="brand">CLUBE DA PIPOCA 🍿</div>
+        <div class="brand-kicker">CLUBE DA PIPOCA 🍿</div>
+        <img class="blacktv-logo" src="blacktv.png" alt="BLACK TV">
 
-        <h1>CLUBE DA PIPOCA 🍿</h1>
-        <p class="subtitle">Filmes, séries e canais na palma da sua mão.</p>
+        <h1>BEM VINDO A BLACK TV</h1>
+        <p class="subtitle">Seu entretenimento sem limites!</p>
 
         <div class="promo" id="promoBox">
-          <h2>PROMOÇÃO RELÂMPAGO ⚡</h2>
+          <h2>⚡ PROMOÇÃO RELÂMPAGO</h2>
           <p>Aqui você assina 1 plano e ganha 2 telas simultâneas.</p>
           <span class="promo-warning">⚠️ ESSA PROMOÇÃO É VÁLIDA SOMENTE ENQUANTO O CRONÔMETRO ESTIVER ATIVO.</span>
 
@@ -443,7 +550,7 @@ background-position: center;
 
         <div class="promo-ended" id="promoEnded">PROMOÇÃO ENCERRADA</div>
 
-        <a class="whatsapp-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">CHAMAR NO WHATSAPP</a>
+        <a class="trial-btn" href="https://wa.me/5522992828537?text=Olá!%20Quero%20solicitar%20meu%20teste%20grátis%20da%20BLACK%20TV" target="_blank" rel="noopener">🎁 SOLICITE SEU TESTE GRÁTIS</a>
 
         <div class="video-area">
           <video controls>
@@ -493,7 +600,7 @@ background-position: center;
       <div class="section-inner">
         <div class="section-title">
           <h2>Planos IPTV</h2>
-          <p>Todos os planos com atendimento rápido pelo WhatsApp 22 99282-8537.</p>
+          <p>Escolha seu plano e fale direto pelo WhatsApp 22 99282-8537.</p>
         </div>
 
         <div class="plan-grid">
@@ -529,12 +636,13 @@ background-position: center;
             <a class="card-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">ASSINAR AGORA</a>
           </article>
         </div>
+
       </div>
     </section>
   </main>
 
   <footer>
-    CLUBE DA PIPOCA 🍿 © 2026. WhatsApp: 22 99282-8537.
+    BLACK TV © 2026. WhatsApp: 22 99282-8537.
   </footer>
 
   <script>
@@ -545,7 +653,7 @@ background-position: center;
     const secondsEl = document.getElementById("seconds");
 
     const duration = 2 * 60 * 60 * 1000;
-    const storageKey = "clubeDaPipocaPromoEnd";
+    const storageKey = "blackTvPromoEnd";
     let endTime = Number(localStorage.getItem(storageKey));
 
     if (!endTime) {
