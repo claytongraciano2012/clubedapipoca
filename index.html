@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLUBE DA PIPOCA 🍿</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #050505;
+      --black-2: #0d0d0d;
+      --gold: #d7a94d;
+      --gold-light: #ffe09a;
+      --green: #25d366;
+      --green-dark: #06190d;
+      --white: #ffffff;
+      --muted: #cfcfcf;
+      --line: rgba(255, 255, 255, .15);
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 18px 42px;
+      position: relative;
+      overflow: hidden;
+      background:
+linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.15)),
+url('banner.jpg');
+
+background-size: cover;
+background-position: center;
+    }
+
+    .hero-content {
+      width: min(1120px, 100%);
+      position: relative;
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border: 1px solid rgba(255, 224, 154, .55);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .22);
+      color: var(--gold-light);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .18);
+    }
+
+    h1 {
+      max-width: 980px;
+      font-size: clamp(34px, 6vw, 68px);
+      line-height: 1;
+      font-weight: 900;
+      text-shadow: 0 8px 28px rgba(0, 0, 0, .7);
+    }
+
+    .subtitle {
+      max-width: 720px;
+      color: #f3f3f3;
+      font-size: clamp(17px, 2.3vw, 23px);
+      font-weight: 700;
+      text-shadow: 0 5px 24px rgba(0, 0, 0, .82);
+    }
+
+    .promo {
+      width: min(820px, 100%);
+      padding: 16px;
+      border: 1px solid rgba(255, 224, 154, .48);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, .28);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 58px rgba(0, 0, 0, .32);
+    }
+
+    .promo h2 {
+      color: var(--gold-light);
+      font-size: clamp(20px, 3vw, 30px);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .promo p {
+      color: #f7f7f7;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .promo-warning {
+      display: block;
+      margin-top: 8px;
+      color: #fff2c8;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(86px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .time-box {
+      min-height: 74px;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .time-box strong {
+      color: var(--white);
+      font-size: clamp(26px, 5vw, 38px);
+      line-height: 1;
+    }
+
+    .time-box span {
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .promo-ended {
+      display: none;
+      width: min(720px, 100%);
+      padding: 18px;
+      border: 1px solid rgba(255, 224, 154, .5);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, .34);
+      color: var(--gold-light);
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 900;
+    }
+
+    .whatsapp-btn,
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--green-dark);
+      font-weight: 900;
+      font-size: 16px;
+      text-transform: uppercase;
+      box-shadow: 0 15px 36px rgba(37, 211, 102, .34);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .whatsapp-btn:hover,
+    .card-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(37, 211, 102, .46);
+    }
+
+    .video-area {
+      width: min(790px, 100%);
+      padding: 8px;
+      border: 1px solid rgba(255, 224, 154, .42);
+      border-radius: 16px;
+      background: rgba(0, 0, 0, .24);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .5);
+      backdrop-filter: blur(6px);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      background: #000000;
+      object-fit: cover;
+    }
+
+    .section {
+      padding: 72px 18px;
+      background: linear-gradient(180deg, #050505 0%, #101010 52%, #050505 100%);
+    }
+
+    .section.alt {
+      background: #080808;
+    }
+
+    .section-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title h2 {
+      color: var(--gold-light);
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .benefit-grid,
+    .device-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .benefit-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .device-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .benefit,
+    .device {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025));
+      color: #f4f4f4;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .3);
+    }
+
+    .benefit {
+      color: var(--gold-light);
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .plan-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(150deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .03));
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .36);
+    }
+
+    .plan-card.featured {
+      border-color: rgba(255, 224, 154, .74);
+      background: linear-gradient(150deg, rgba(215, 169, 77, .18), rgba(255, 255, 255, .04));
+      box-shadow: 0 24px 70px rgba(215, 169, 77, .16);
+    }
+
+    .plan-tag {
+      min-height: 20px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .plan-card h3 {
+      color: var(--white);
+      font-size: 21px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .no-adults {
+      color: var(--gold-light);
+    }
+
+    .price {
+      margin: 6px 0 18px;
+    }
+
+    .price strong {
+      color: var(--white);
+      font-size: clamp(30px, 4vw, 38px);
+      line-height: 1;
+    }
+
+    .plan-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    footer {
+      padding: 28px 18px 34px;
+      background: #050505;
+      color: rgba(255, 255, 255, .68);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1020px) {
+      .benefit-grid,
+      .device-grid,
+      .plan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: auto;
+        padding: 24px 14px 36px;
+      }
+
+      .hero-content {
+        gap: 14px;
+      }
+
+      .brand {
+        font-size: 12px;
+      }
+
+      .promo {
+        padding: 14px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .time-box {
+        min-height: 66px;
+        padding: 8px 4px;
+      }
+
+      .video-area {
+        padding: 5px;
+        border-radius: 12px;
+      }
+
+      video {
+        border-radius: 8px;
+      }
+
+      .whatsapp-btn,
+      .card-btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 52px 14px;
+      }
+
+      .benefit-grid,
+      .device-grid,
+      .plan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit,
+      .device {
+        min-height: 76px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="brand">CLUBE DA PIPOCA 🍿</div>
+
+        <h1>CLUBE DA PIPOCA 🍿</h1>
+        <p class="subtitle">Filmes, séries e canais na palma da sua mão.</p>
+
+        <div class="promo" id="promoBox">
+          <h2>PROMOÇÃO RELÂMPAGO ⚡</h2>
+          <p>Aqui você assina 1 plano e ganha 2 telas simultâneas.</p>
+          <span class="promo-warning">⚠️ ESSA PROMOÇÃO É VÁLIDA SOMENTE ENQUANTO O CRONÔMETRO ESTIVER ATIVO.</span>
+
+          <div class="countdown" aria-label="Cronômetro da promoção">
+            <div class="time-box">
+              <strong id="hours">02</strong>
+              <span>Horas</span>
+            </div>
+            <div class="time-box">
+              <strong id="minutes">00</strong>
+              <span>Minutos</span>
+            </div>
+            <div class="time-box">
+              <strong id="seconds">00</strong>
+              <span>Segundos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-ended" id="promoEnded">PROMOÇÃO ENCERRADA</div>
+
+        <a class="whatsapp-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">CHAMAR NO WHATSAPP</a>
+
+        <div class="video-area">
+          <video controls>
+            <source src="video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Por que assinar com a gente?</h2>
+          <p>Experiência completa para assistir com praticidade todos os dias.</p>
+        </div>
+
+        <div class="benefit-grid">
+          <div class="benefit">✔ 2 telas simultâneas</div>
+          <div class="benefit">✔ Instalação rápida</div>
+          <div class="benefit">✔ Suporte no WhatsApp</div>
+          <div class="benefit">✔ Filmes e séries atualizados</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Aparelhos compatíveis</h2>
+          <p>Assista na TV, no computador ou em dispositivos móveis.</p>
+        </div>
+
+        <div class="device-grid">
+          <div class="device">Samsung TV</div>
+          <div class="device">LG TV</div>
+          <div class="device">Android TV</div>
+          <div class="device">Roku TV</div>
+          <div class="device">PC</div>
+          <div class="device">Notebook</div>
+          <div class="device">Tablet</div>
+          <div class="device">Celular</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Planos IPTV</h2>
+          <p>Todos os planos com atendimento rápido pelo WhatsApp 22 99282-8537.</p>
+        </div>
+
+        <div class="plan-grid">
+          <article class="plan-card">
+            <div class="plan-tag">Plano mensal</div>
+            <h3>1 MÊS</h3>
+            <div class="price"><strong>R$ 30,00</strong></div>
+            <p class="plan-note">Acesso completo para assistir seus conteúdos favoritos.</p>
+            <a class="card-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">ASSINAR AGORA</a>
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-tag">Plano trimestral</div>
+            <h3>3 MESES</h3>
+            <div class="price"><strong>R$ 85,00</strong></div>
+            <p class="plan-note">Mais tempo de acesso com pacote econômico.</p>
+            <a class="card-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">ASSINAR AGORA</a>
+          </article>
+
+          <article class="plan-card">
+            <div class="plan-tag">Plano semestral</div>
+            <h3>6 MESES</h3>
+            <div class="price"><strong>R$ 160,00</strong></div>
+            <p class="plan-note">Ideal para quem quer estabilidade por mais tempo.</p>
+            <a class="card-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">ASSINAR AGORA</a>
+          </article>
+
+          <article class="plan-card featured">
+            <div class="plan-tag">MELHOR CUSTO BENEFÍCIO</div>
+            <h3>12 MESES</h3>
+            <div class="price"><strong>R$ 240,00</strong></div>
+            <p class="plan-note">O plano premium para economizar e assistir o ano inteiro.</p>
+            <a class="card-btn" href="https://wa.me/5522992828537" target="_blank" rel="noopener">ASSINAR AGORA</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CLUBE DA PIPOCA 🍿 © 2026. WhatsApp: 22 99282-8537.
+  </footer>
+
+  <script>
+    const promoBox = document.getElementById("promoBox");
+    const promoEnded = document.getElementById("promoEnded");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    const duration = 2 * 60 * 60 * 1000;
+    const storageKey = "clubeDaPipocaPromoEnd";
+    let endTime = Number(localStorage.getItem(storageKey));
+
+    if (!endTime) {
+      endTime = Date.now() + duration;
+      localStorage.setItem(storageKey, String(endTime));
+    }
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function updateCountdown() {
+      const remaining = Math.max(0, endTime - Date.now());
+      const totalSeconds = Math.floor(remaining / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      hoursEl.textContent = pad(hours);
+      minutesEl.textContent = pad(minutes);
+      secondsEl.textContent = pad(seconds);
+
+      if (remaining <= 0) {
+        promoBox.style.display = "none";
+        promoEnded.style.display = "block";
+        clearInterval(timer);
+      }
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
